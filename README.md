@@ -3,6 +3,8 @@ Shrimp Paste
 
 Shrimp Paste is a very basic javascript slider.
 
+This slider is in a proof-of-concept stage. Not ready for production yet, and many, many, options have to be implemented.
+
 ## The idea
 
 The Shrimp Paste javascript slider is the slider that only provides the functionality of a javascript slider.
