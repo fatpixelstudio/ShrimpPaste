@@ -1,1 +1,21 @@
-/* Tamarind styles */
+/* Shrimp Paste styles */
+
+.ShrimpPasteWrap {
+	position: relative;
+	width: 100%;
+}
+
+.ShrimpPaste {
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ShrimpPaste-item {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
