@@ -1,11 +1,15 @@
 /* Shrimp Paste styles */
 
-.ShrimpPasteWrap {
+* {
+	box-sizing: border-box;
+}
+
+.ShrimpPasteViewport {
 	position: relative;
 	width: 100%;
 }
 
-.ShrimpPaste {
+.ShrimpPasteWrap {
 	display: block;
 	position: relative;
 	margin: 0;
@@ -18,4 +22,18 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	border: 1px solid #eee;
+	text-align: center;
+}
+
+.ShrimpPaste.is-active .ShrimpPasteWrap {
+	transition: transform .24s ease-out;
+}
+
+.ShrimpPaste.is-active .ShrimpPasteViewport {
+	overflow: hidden;
+}
+
+.ShrimpPaste.is-active .ShrimpPaste-item {
+	float: left;
 }
