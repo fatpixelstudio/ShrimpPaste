@@ -31,10 +31,14 @@ window.shrimppaste = (function (window, document, undefined) {
 	shrimppaste.handleSlideClick = function(event, direction, parent) {
 		event.preventDefault();
 		if(direction === 'prev') {
-			shrimppaste.steps.current = shrimppaste.steps.current + shrimppaste.steps.width;
+			if((shrimppaste.steps.current + shrimppaste.steps.width) <= 0){
+				shrimppaste.steps.current = shrimppaste.steps.current + shrimppaste.steps.width;
+			}
 		}
 		else {
-			shrimppaste.steps.current = shrimppaste.steps.current - shrimppaste.steps.width;
+			if(shrimppaste.steps.current - shrimppaste.steps.width >= -1 * shrimppaste.steps.max){
+				shrimppaste.steps.current = shrimppaste.steps.current - shrimppaste.steps.width;
+			}
 		}
 
 		var slidesWrap = parent.querySelector('.js-shrimppaste-wrap');
@@ -50,15 +54,17 @@ window.shrimppaste = (function (window, document, undefined) {
 
 	shrimppaste.build = function (sliderEl, opts) {
 		var slidesViewport = sliderEl.querySelector('.js-shrimppaste-viewport');
-		var maxWidth = slidesViewport.offsetWidth;
-		var slideWidth = maxWidth / opts.slides;
+		var maxWidth = Math.round(slidesViewport.offsetWidth);
+		var slideWidth = Math.round(maxWidth / opts.slides);
 		var slides = sliderEl.querySelectorAll('.js-shrimppaste-item');
-		var totWidth = slideWidth * slides.length;
+		var totWidth = Math.round(slideWidth * slides.length);
 		var slidesWrap = sliderEl.querySelector('.js-shrimppaste-wrap');
 
+		// slidesViewport.style.width = slidesViewport.style.width + 1 +'px';
 		slidesWrap.style.width = totWidth.toString() + 'px';
 		sliderEl.classList.add('is-active');
 		shrimppaste.steps.width = slideWidth;
+		shrimppaste.steps.max = totWidth - maxWidth;
 		shrimppaste.steps.current = 0;
 
 		var prevButton = shrimppaste.createNav('prev',sliderEl);
@@ -79,4 +85,4 @@ window.shrimppaste = (function (window, document, undefined) {
 
 })(window, document);
 
-shrimppaste.init({ 'slides' : 3 });
+shrimppaste.init({ 'slides' : 4 });

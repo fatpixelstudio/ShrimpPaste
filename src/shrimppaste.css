@@ -4,6 +4,11 @@
 	box-sizing: border-box;
 }
 
+.ShrimpPaste {
+	position: relative;
+	padding: 0 4em;
+}
+
 .ShrimpPasteViewport {
 	position: relative;
 	width: 100%;
@@ -36,4 +41,18 @@
 
 .ShrimpPaste.is-active .ShrimpPaste-item {
 	float: left;
+}
+
+.ShrimpPaste-button {
+	position: absolute;
+	top: 50%;
+	margin-top: -.5em;
+}
+
+.ShrimpPaste-button--next {
+	right: 0;
+}
+
+.ShrimpPaste-button--prev {
+	left: 0;
 }
