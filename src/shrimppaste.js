@@ -1,5 +1,8 @@
 /**
  * Shrimp Paste
+ * ------------
+ * This is the plain javascript variant, if you are using jQuery and want to
+ * support older browsers, use the jquery variant!
  */
 
 window.shrimppaste = (function (window, document, undefined) {
@@ -11,11 +14,14 @@ window.shrimppaste = (function (window, document, undefined) {
 	}
 
 	// Feature Test
-	if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
-		console.log('your browser meets the requirements');
-	}
-	else {
-		console.log('your browser is kind of old. Lets serve an alternate version');
+
+	shrimppaste.cutsMustard = function() {
+		if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	shrimppaste.createNav = function(type, parent) {
@@ -46,9 +52,11 @@ window.shrimppaste = (function (window, document, undefined) {
 	}
 
 	shrimppaste.init = function (opts) {
-		var sliders = document.querySelectorAll('.js-shrimppaste');
-		for(var i = 0; i < sliders.length; i++) {
-			shrimppaste.build(sliders[i], opts);
+		if(shrimppaste.cutsMustard) {
+			var sliders = document.querySelectorAll('.js-shrimppaste');
+			for(var i = 0; i < sliders.length; i++) {
+				shrimppaste.build(sliders[i], opts);
+			}
 		}
 	}
 
