@@ -113,24 +113,11 @@ window.shrimppaste = (function (window, document, undefined) {
 		steps : {}
 	}
 
-	// Feature Test
-
-	shrimppaste.cutsMustard = function() {
-		if ( 'querySelector' in document && 'addEventListener' in window && Array.prototype.forEach ) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-
 	shrimppaste.init = function (opts) {
-		if(shrimppaste.cutsMustard) {
-			$('.js-shrimppaste').each(function(){
-				var shrimppasteinstance = new shrimppasteclass();
-				shrimppasteinstance.build($(this), opts);
-			});
-		}
+		$('.js-shrimppaste').each(function(){
+			var shrimppasteinstance = new shrimppasteclass();
+			shrimppasteinstance.build($(this), opts);
+		});
 	}
 
 	return shrimppaste;
