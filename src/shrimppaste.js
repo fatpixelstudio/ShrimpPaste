@@ -121,6 +121,7 @@ window.shrimppaste = (function (window, document, undefined) {
 			return true;
 		}
 		else {
+			// If feature test returns false: you might consider using the jQuery variant
 			return false;
 		}
 	}
