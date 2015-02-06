@@ -126,7 +126,7 @@ window.shrimppaste = (function (window, document, undefined) {
 	}
 
 	shrimppaste.init = function (opts) {
-		if(shrimppaste.cutsMustard) {
+		if(shrimppaste.cutsMustard()) {
 			var sliders = document.querySelectorAll('.js-shrimppaste');
 			for(var i = 0; i < sliders.length; i++) {
 				var shrimppasteinstance = new shrimppasteclass();
