@@ -48,7 +48,6 @@
 		var totWidth = Math.round(slideWidth * slides.length);
 		var slidesWrap = sliderEl.querySelector('.js-shrimppaste-wrap');
 
-		// slidesViewport.style.width = slidesViewport.style.width + 1 +'px';
 		slidesWrap.style.width = totWidth.toString() + 'px';
 		sliderEl.classList.add('is-active');
 		self.steps.width = slideWidth;
@@ -67,8 +66,6 @@
 			slides[i].style.width = slideWidth.toString() +'px';
 		}
 	}
-
-//	return shrimppasteclass;
 
 };
 
