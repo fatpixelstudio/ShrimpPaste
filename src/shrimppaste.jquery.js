@@ -93,6 +93,8 @@
 			sliderEl.append(prevButton);
 			sliderEl.append(nextButton);
 
+			prevButton.classList.add('ShrimpPaste-button--inActive');
+
 			nextButton.on('click', function(event){ self.handleSlideClick(event, 'next', sliderEl); });
 			prevButton.on('click', function(event){ self.handleSlideClick(event, 'prev', sliderEl); });
 		}
