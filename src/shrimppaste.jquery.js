@@ -23,16 +23,49 @@
 		return button;
 	}
 
+	this.setAllNavActive = function(sliderEl) {
+		sliderEl.find('.js-next').removeClass('ShrimpPaste-button--inActive');
+		sliderEl.find('.js-prev').removeClass('ShrimpPaste-button--inActive');
+	}
+
+	this.setNavInactive =  function(event) {
+		var button = $(event.target);
+		button.addClass('ShrimpPaste-button--inActive');
+	}
+
 	this.handleSlideClick = function(event, direction, parent) {
 		event.preventDefault();
+
+		self.setAllNavActive(parent);
+
 		if(direction === 'prev') {
+			// Check if current step is possible
 			if((self.steps.current + self.steps.width) <= 0){
 				self.steps.current = self.steps.current + self.steps.width;
+
+				// Check if *next* step is even possible
+				if((self.steps.current + self.steps.width) > 0){
+					self.setNavInactive(event);
+				}
+			}
+			else {
+				// Current step not possible, keep button inactive
+				self.setNavInactive(event);
 			}
 		}
 		else {
+			// Check if current step is possible
 			if(self.steps.current - self.steps.width >= -1 * self.steps.max){
 				self.steps.current = self.steps.current - self.steps.width;
+
+				// Check if *next* step is even possible
+				if(self.steps.current - self.steps.width <= -1 * self.steps.max){
+					self.setNavInactive(event);
+				}
+			}
+			else {
+				// Current step not possible, keep button inactive
+				self.setNavInactive(event);
 			}
 		}
 
@@ -48,27 +81,27 @@
 		var totWidth = Math.round(slideWidth * slides.length);
 		var slidesWrap = sliderEl.find('.js-shrimppaste-wrap');
 
-		// slidesViewport.style.width = slidesViewport.style.width + 1 +'px';
 		slidesWrap.css('width', totWidth.toString() + 'px');
 		sliderEl.addClass('is-active');
 		self.steps.width = slideWidth;
 		self.steps.max = totWidth - maxWidth;
 		self.steps.current = 0;
 
-		var prevButton = self.createNav('prev',sliderEl);
-		var nextButton = self.createNav('next',sliderEl);
-		sliderEl.append(prevButton);
-		sliderEl.append(nextButton);
+		if(self.steps.max > slideWidth) {
+			var prevButton = self.createNav('prev',sliderEl);
+			var nextButton = self.createNav('next',sliderEl);
+			sliderEl.append(prevButton);
+			sliderEl.append(nextButton);
 
-		nextButton.on('click', function(event){ self.handleSlideClick(event, 'next', sliderEl); });
-		prevButton.on('click', function(event){ self.handleSlideClick(event, 'prev', sliderEl); });
+			nextButton.on('click', function(event){ self.handleSlideClick(event, 'next', sliderEl); });
+			prevButton.on('click', function(event){ self.handleSlideClick(event, 'prev', sliderEl); });
+		}
 
 		slides.each(function() {
 			$(this).css('width', slideWidth.toString() +'px');
 		});
 	}
 
-//	return shrimppasteclass;
 
 };
 
