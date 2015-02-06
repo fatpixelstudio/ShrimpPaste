@@ -23,16 +23,49 @@
 		return button;
 	}
 
+	this.setAllNavActive = function(sliderEl) {
+		sliderEl.querySelector('.js-next').classList.remove('ShrimpPaste-button--inActive');
+		sliderEl.querySelector('.js-prev').classList.remove('ShrimpPaste-button--inActive');
+	}
+
+	this.setNavInactive =  function(event) {
+		var button = event.target;
+		button.classList.add('ShrimpPaste-button--inActive');
+	}
+
 	this.handleSlideClick = function(event, direction, parent) {
 		event.preventDefault();
+
+		self.setAllNavActive(parent);
+
 		if(direction === 'prev') {
+			// Check if current step is possible
 			if((self.steps.current + self.steps.width) <= 0){
 				self.steps.current = self.steps.current + self.steps.width;
+
+				// Check if *next* step is even possible
+				if((self.steps.current + self.steps.width) > 0){
+					self.setNavInactive(event);
+				}
+			}
+			else {
+				// Current step not possible, keep button inactive
+				self.setNavInactive(event);
 			}
 		}
 		else {
+			// Check if current step is possible
 			if(self.steps.current - self.steps.width >= -1 * self.steps.max){
 				self.steps.current = self.steps.current - self.steps.width;
+
+				// Check if *next* step is even possible
+				if(self.steps.current - self.steps.width <= -1 * self.steps.max){
+					self.setNavInactive(event);
+				}
+			}
+			else {
+				// Current step not possible, keep button inactive
+				self.setNavInactive(event);
 			}
 		}
 

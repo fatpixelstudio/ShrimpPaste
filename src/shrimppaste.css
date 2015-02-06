@@ -56,3 +56,8 @@
 .ShrimpPaste-button--prev {
 	left: 0;
 }
+
+.ShrimpPaste-button--inActive {
+	color: #ccc;
+	cursor: default;
+}
