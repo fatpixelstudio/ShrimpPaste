@@ -87,13 +87,17 @@
 		self.steps.max = totWidth - maxWidth;
 		self.steps.current = 0;
 
-		var prevButton = self.createNav('prev',sliderEl);
-		var nextButton = self.createNav('next',sliderEl);
-		sliderEl.appendChild(prevButton);
-		sliderEl.appendChild(nextButton);
+		if(self.steps.max > slideWidth) {
+			var prevButton = self.createNav('prev',sliderEl);
+			var nextButton = self.createNav('next',sliderEl);
+			sliderEl.appendChild(prevButton);
+			sliderEl.appendChild(nextButton);
 
-		nextButton.addEventListener('click', function(event){ self.handleSlideClick(event, 'next', sliderEl); }, false);
-		prevButton.addEventListener('click', function(event){ self.handleSlideClick(event, 'prev', sliderEl); }, false);
+			prevButton.classList.add('ShrimpPaste-button--inActive');
+
+			nextButton.addEventListener('click', function(event){ self.handleSlideClick(event, 'next', sliderEl); }, false);
+			prevButton.addEventListener('click', function(event){ self.handleSlideClick(event, 'prev', sliderEl); }, false);
+		}
 
 		for(var i = 0; i < slides.length; i++) {
 			slides[i].style.width = slideWidth.toString() +'px';
