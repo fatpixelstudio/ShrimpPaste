@@ -125,5 +125,3 @@ window.shrimppaste = (function (window, document, undefined) {
 	return shrimppaste;
 
 })(window, document);
-
-shrimppaste.init({ 'slides' : 4 });
