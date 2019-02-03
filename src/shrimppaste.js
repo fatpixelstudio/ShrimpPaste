@@ -8,6 +8,11 @@ var ShrimpPaste = (function () {
 		openmodal: null
 	};
 
+	var callbacks = {
+		onOpen: null,
+		onClose: null
+	};
+
 	function whichTransitionEvent() {
 		var t;
 		var el = document.createElement('fakeelement');
@@ -47,6 +52,10 @@ var ShrimpPaste = (function () {
 				this.removeEventListener(transitionEnd, endTransitionBackdropClose, false);
 			}, false);
 
+			if (callbacks.onClose !== null) {
+				callbacks.onClose();
+			}
+
 			elements.openmodal.classList.add('is-hiding');
 		}
 	}
@@ -76,6 +85,10 @@ var ShrimpPaste = (function () {
 		if (elements.openmodal !== null) {
 			elements.openmodal.classList.add('is-visible');
 			addModalHandlers(elements.openmodal);
+
+			if (callbacks.onOpen !== null) {
+				callbacks.onOpen();
+			}
 		}
 	}
 
@@ -88,6 +101,15 @@ var ShrimpPaste = (function () {
 	function init(opts) {
 		var modals = document.querySelectorAll('.js-shrimppaste');
 		var modalbuttons = document.querySelectorAll('.js-shrimppaste-open');
+
+		if(opts !== null) {
+			if(opts.onOpen !== null) {
+				callbacks.onOpen = opts.onOpen;
+			}
+			if (opts.onClose !== null) {
+				callbacks.onClose = opts.onClose;
+			}
+		}
 
 		if (modals !== null && modals.length !== 0) {
 			addBackdrop();
