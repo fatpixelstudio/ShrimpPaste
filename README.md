@@ -1,14 +1,12 @@
-Shrimp Paste
+ShrimpPaste
 ========
 
-Shrimp Paste is a very basic javascript slider.
+ShrimpPaste is a very basic javascript lightbox (or modal).
 
-This slider is in a proof-of-concept stage. Not ready for production yet, and many, many, options have to be implemented.
+No dependencies, no libraries, just a lightbox. Suitable for the developer that wants to extend / modify it for specific needs.
 
 ## The idea
 
-The Shrimp Paste javascript slider is the slider that only provides the functionality of a javascript slider.
+When searching for basic lightboxes or modals, I found almost all solutions are based on libraries like jQuery. Or they are packed with options and stylesheets.
 
-The styling, markup and whatnot is totally up to you.
-
-Because almost every slider or carousel is packed with options and stylesheets, I decided to create Shrimp Paste. The goal is to keep this as basic as possible, so customizing is no hassle.
+When writing a basic lightbox for the umteenth time, I decided to create Shrimp Paste. The goal is to keep this as basic as possible, so customizing is no hassle.
