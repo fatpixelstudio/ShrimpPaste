@@ -1,93 +1,32 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en_US">
+<html lang="en_US">
 <head>
 	<meta charset="utf-8" />
 
-	<title>Shrimp Paste &mdash; Very basic Javascript slider</title>
+	<title>Shrimp Paste &mdash; Minimalist Javascript lightbox</title>
 	<meta name="description" content="" />
 
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
 	<link rel="stylesheet" href="src/shrimppaste.css" />
 
-	<!--<script src="/assets/javascript/vendor/modernizr.dev.js"></script>-->
 </head>
 <body>
 	<h1>Shrimp Paste</h1>
 
-	<div class="ShrimpPaste js-shrimppaste">
-		<div class="ShrimpPasteViewport js-shrimppaste-viewport">
-			<ul class="ShrimpPasteWrap js-shrimppaste-wrap">
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 1</p>
-				</li>
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 2</p>
-				</li>
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 3</p>
-				</li>
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 4</p>
-				</li>
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 5</p>
-				</li>
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 6</p>
-				</li>
-			</ul>
-		</div>
+	<a href="#example-lightbox" class="js-shrimppaste-open">Open lightbox</a>
+
+	<p>Clicking the button opens a lightbox with the id the href is referring to.</p>
+	<p>Shrimppaste adds a <code>backdrop</code> element to the document if there's a shrimppaste element present.</p>
+
+	<div class="shrimppaste js-shrimppaste" id="example-lightbox">
+		<p>This is the content of the lightbox.</p>
+		<button class="shrimppaste__close js-shrimppaste-close">Close</button>
 	</div>
 
-	<h2>Another slider down here</h2>
-
-	<div class="ShrimpPaste js-shrimppaste">
-		<div class="ShrimpPasteViewport js-shrimppaste-viewport">
-			<ul class="ShrimpPasteWrap js-shrimppaste-wrap">
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 1</p>
-				</li>
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 2</p>
-				</li>
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 3</p>
-				</li>
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 4</p>
-				</li>
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 5</p>
-				</li>
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 6</p>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-
-	<h2>A slider with little content</h2>
-
-	<div class="ShrimpPaste js-shrimppaste">
-		<div class="ShrimpPasteViewport js-shrimppaste-viewport">
-			<ul class="ShrimpPasteWrap js-shrimppaste-wrap">
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 1</p>
-				</li>
-				<li class="ShrimpPaste-item js-shrimppaste-item">
-					<p>Slide 2</p>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-	<!-- <script src="dist/shrimppaste.js"></script> -->
-	<!-- <script src="dist/jquery.min.js"></script> -->
 	<script src="src/shrimppaste.js"></script>
 	<script>
-		shrimppaste.init({ 'slides' : 4 });
+		ShrimpPaste.init({ 'callback' : 'hi' });
 	</script>
 </body>
 </html>
